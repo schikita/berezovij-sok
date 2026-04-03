@@ -1,0 +1,22 @@
+{
+  "name": "birch-sap",
+  "version": "1.0.0",
+  "description": "Ультрасовременный одностраничный сайт о берёзовом соке с горизонтальным скроллом, 3D анимациями и интерактивными эффектами.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:fonts": "node scripts/build-fonts-css.mjs",
+    "vendor:sync": "node scripts/sync-vendor.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fontsource/inter": "^5.0.16",
+    "@fontsource/playfair-display": "^5.0.16",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "gsap": "^3.12.2",
+    "leaflet": "^1.9.4",
+    "swiper": "^10.3.1"
+  }
+}

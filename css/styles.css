@@ -3607,6 +3607,40 @@ body.vertical-layout .about-section .about-content {
   transform: translateY(-3px);
 }
 
+@media (max-width: 992px) {
+  .projects-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pinch-zoom;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+  }
+
+  .projects-stage {
+    justify-content: flex-start;
+    padding: 0 16px 4px;
+    gap: 16px;
+    width: max-content;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .project-card,
+  .project-card.is-active {
+    flex: 0 0 min(300px, 82vw);
+    width: min(300px, 82vw);
+    height: 420px;
+    scroll-snap-align: center;
+  }
+
+  .project-card.is-active {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
 /* ==========================================
    Footer Section
    ========================================== */
@@ -5821,6 +5855,12 @@ body.vertical-layout .footer-section {
     height: 360px;
   }
 
+  /* После появления sap-оверлея даём больше высоты под графику справа снизу */
+  body.vertical-layout .hero-section:has(.hero-sap-overlay.visible) {
+    min-height: max(640px, calc(var(--app-height) * 122));
+    padding-bottom: clamp(80px, 18vh, 132px);
+  }
+
   body.vertical-layout .game-area {
     height: clamp(300px, 48vh, 420px);
   }
@@ -5841,6 +5881,11 @@ body.vertical-layout .footer-section {
 
   body.vertical-layout .hero-badge {
     margin-bottom: 20px;
+  }
+
+  body.vertical-layout .hero-section:has(.hero-sap-overlay.visible) {
+    min-height: max(680px, calc(var(--app-height) * 128));
+    padding-bottom: clamp(96px, 22vh, 160px);
   }
 
   body.vertical-layout .game-section {

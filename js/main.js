@@ -27,6 +27,8 @@ if (!sections.length) {
 let galleryMainSwiper = null;
 let galleryThumbsSwiper = null;
 
+let centerProjectsActiveCard = () => { };
+
 let currentSection = 0;
 let activeObservers = [];
 let lastKnownScrollY = 0;
@@ -459,11 +461,22 @@ function initParticles() {
 function initSwiper() {
     if (!document.getElementById('gallerySlider') || !document.getElementById('galleryThumbs')) return;
 
+    const trackpadHorizontalWheel = {
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+        thresholdDelta: 8,
+        thresholdTime: 400
+    };
+
     galleryThumbsSwiper = new Swiper('#galleryThumbs', {
         spaceBetween: 10,
         slidesPerView: 4,
         freeMode: true,
         watchSlidesProgress: true,
+        touchReleaseOnEdges: true,
+        grabCursor: true,
+        mousewheel: trackpadHorizontalWheel,
         breakpoints: {
             320: { slidesPerView: 3 },
             768: { slidesPerView: 4 },
@@ -475,6 +488,9 @@ function initSwiper() {
         spaceBetween: 0,
         effect: 'fade',
         fadeEffect: { crossFade: true },
+        touchReleaseOnEdges: true,
+        grabCursor: true,
+        mousewheel: trackpadHorizontalWheel,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -495,6 +511,28 @@ function initSwiper() {
             enabled: true
         }
     });
+}
+
+function initProjectsHorizontalScroll() {
+    const viewport = document.querySelector('.projects-viewport');
+    if (!viewport) return;
+
+    const mq = window.matchMedia('(max-width: 992px)');
+
+    centerProjectsActiveCard = function centerActiveCard() {
+        if (!mq.matches) return;
+        const active = viewport.querySelector('.project-card.is-active');
+        if (!active) return;
+        active.scrollIntoView({
+            inline: 'center',
+            block: 'nearest',
+            behavior: 'instant'
+        });
+    };
+
+    mq.addEventListener('change', centerProjectsActiveCard);
+
+    requestAnimationFrame(() => requestAnimationFrame(centerProjectsActiveCard));
 }
 
 function initLightbox() {
@@ -809,21 +847,21 @@ function initVerticalVideoPlayer() {
             return;
         }
         if (el.requestFullscreen) {
-            el.requestFullscreen().catch(() => {});
+            el.requestFullscreen().catch(() => { });
         } else if (el.webkitRequestFullscreen) {
             el.webkitRequestFullscreen();
         }
     }
 
     bigPlay.addEventListener('click', () => {
-        video.play().catch(() => {});
+        video.play().catch(() => { });
     });
     toggleBtn.addEventListener('click', () => {
-        if (video.paused) video.play().catch(() => {});
+        if (video.paused) video.play().catch(() => { });
         else video.pause();
     });
     video.addEventListener('click', () => {
-        if (video.paused) video.play().catch(() => {});
+        if (video.paused) video.play().catch(() => { });
         else video.pause();
     });
     muteBtn.addEventListener('click', () => {
@@ -886,7 +924,7 @@ function initVerticalVideoPlayer() {
     root.addEventListener('keydown', (e) => {
         if (e.code === 'Space' || e.key === ' ') {
             e.preventDefault();
-            if (video.paused) video.play().catch(() => {});
+            if (video.paused) video.play().catch(() => { });
             else video.pause();
         }
     });
@@ -923,11 +961,11 @@ function initLazyAssets() {
 }
 
 const SAP_PRICES_LOCATIONS = [
-    { lat: 53.91845, lng: 27.57342, title: 'ул. Багратиона, 70' },
-    { lat: 53.95148, lng: 27.61528, title: 'Логойский тракт, 52' },
-    { lat: 53.92908, lng: 27.59895, title: 'ул. Тимирязева, 118' },
-    { lat: 53.86775, lng: 27.53235, title: 'ул. Леонида Левина, 8' },
-    { lat: 53.86085, lng: 27.48265, title: 'пр. Дзержинского, 104' },
+    { lat: 53.90937, lng: 27.63828, title: 'ул. Багратиона, 70' },
+    { lat: 53.95835, lng: 27.63362, title: 'Логойский тракт, 52' },
+    { lat: 53.93664, lng: 27.45307, title: 'ул. Тимирязева, 118' },
+    { lat: 53.86647, lng: 27.52975, title: 'ул. Леонида Левина, 8' },
+    { lat: 53.86191, lng: 27.48036, title: 'пр. Дзержинского, 104' },
 ];
 
 let leafletLoadPromise = null;
@@ -940,11 +978,11 @@ function ensureLeafletLoaded() {
     leafletLoadPromise = new Promise((resolve, reject) => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        link.href = 'vendor/leaflet/leaflet.css';
         document.head.appendChild(link);
 
         const script = document.createElement('script');
-        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.src = 'vendor/leaflet/leaflet.js';
         script.async = true;
         script.onload = () => resolve();
         script.onerror = () => reject(new Error('Leaflet failed to load'));
@@ -968,9 +1006,9 @@ function initSapPricesMapSection(section) {
             const { L } = window;
             delete L.Icon.Default.prototype._getIconUrl;
             L.Icon.Default.mergeOptions({
-                iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-                iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-                shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+                iconRetinaUrl: 'vendor/leaflet/images/marker-icon-2x.png',
+                iconUrl: 'vendor/leaflet/images/marker-icon.png',
+                shadowUrl: 'vendor/leaflet/images/marker-shadow.png',
             });
 
             const map = L.map(mapEl, {
@@ -1163,6 +1201,7 @@ function initApp() {
     initTiltEffect();
     initParticles();
     initSwiper();
+    initProjectsHorizontalScroll();
     initLightbox();
     initVideoModal();
     initVerticalVideoPlayer();
@@ -1191,6 +1230,7 @@ window.addEventListener('resize', () => {
         ScrollTrigger.refresh();
         detectActiveSection();
         sapPricesMapBundle?.map?.invalidateSize();
+        centerProjectsActiveCard();
     }, 120);
 }, { passive: true });
 
