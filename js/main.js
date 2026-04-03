@@ -138,6 +138,11 @@ function setActiveSection(index) {
         link.classList.toggle('active', !Number.isNaN(target) && target === index);
     });
 
+    mobileNavLinks.forEach((link) => {
+        const target = Number.parseInt(link.dataset.section, 10);
+        link.classList.toggle('active', !Number.isNaN(target) && target === index);
+    });
+
     sections.forEach((section, sectionIndex) => {
         section.classList.toggle('active-section', sectionIndex === index);
     });
@@ -206,10 +211,16 @@ function initNavigation() {
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            const open = !mobileMenu.classList.contains('active');
+            mobileMenuBtn.classList.toggle('active', open);
+            mobileMenu.classList.toggle('active', open);
+            mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+            mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            mobileMenuBtn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+            document.body.style.overflow = open ? 'hidden' : '';
         });
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-controls', 'mobileMenu');
     }
 
     mobileNavLinks.forEach((link) => {
@@ -218,6 +229,14 @@ function initNavigation() {
             const sectionIndex = Number.parseInt(link.dataset.section, 10);
             if (!Number.isNaN(sectionIndex)) {
                 scrollToSection(sectionIndex);
+            }
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Открыть меню');
+                document.body.style.overflow = '';
             }
         });
     });

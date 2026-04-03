@@ -241,7 +241,12 @@
             >
           </li>
         </ul>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <button
+          type="button"
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Открыть меню"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -250,24 +255,65 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <ul class="mobile-nav-links">
-        <li>
-          <a href="#hero" class="mobile-nav-link" data-section="0"
-            >Ищем нужное дерево</a
-          >
-        </li>
-        <li>
-          <a href="#about" class="mobile-nav-link" data-section="2"
-            >Делаем берёзовый фреш</a
-          >
-        </li>
-        <li>
-          <a href="#prodazha" class="mobile-nav-link" data-section="11"
-            >Почему сок продают?</a
-          >
-        </li>
-      </ul>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu__inner">
+        <header class="mobile-menu__head">
+          <span class="mobile-menu__eyebrow">Живой репортаж</span>
+        </header>
+        <ul class="mobile-nav-links">
+          <li>
+            <a
+              href="#hero"
+              class="mobile-nav-link"
+              data-section="0"
+            >
+              <span class="mobile-nav-link__icon" aria-hidden="true">
+                <i class="fas fa-tree"></i>
+              </span>
+              <span class="mobile-nav-link__body">
+                <span class="mobile-nav-link__text">Ищем нужное дерево</span>
+              </span>
+              <span class="mobile-nav-link__chev" aria-hidden="true">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="mobile-nav-link"
+              data-section="2"
+            >
+              <span class="mobile-nav-link__icon" aria-hidden="true">
+                <i class="fas fa-fill-drip"></i>
+              </span>
+              <span class="mobile-nav-link__body">
+                <span class="mobile-nav-link__text">Делаем берёзовый фреш</span>
+              </span>
+              <span class="mobile-nav-link__chev" aria-hidden="true">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#prodazha"
+              class="mobile-nav-link"
+              data-section="11"
+            >
+              <span class="mobile-nav-link__icon" aria-hidden="true">
+                <i class="fas fa-store"></i>
+              </span>
+              <span class="mobile-nav-link__body">
+                <span class="mobile-nav-link__text">Почему сок продают?</span>
+              </span>
+              <span class="mobile-nav-link__chev" aria-hidden="true">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- Progress Indicator -->
@@ -308,9 +354,8 @@
               </div>
               <h1 class="hero-title">
                 <span class="title-line" data-parallax="1">Как заготовить</span>
-                <span class="title-line" data-parallax="1.2">берёзовый</span>
-                <span class="title-line accent" data-parallax="1.4"
-                  >сок?</span
+                <span class="title-line" data-parallax="1.25"
+                  >берёзовый <span class="accent">сок?</span></span
                 >
               </h1>
               <div class="hero-buttons" data-parallax="1.2">
@@ -1300,8 +1345,30 @@
           <footer class="site-footer" role="contentinfo">
             <div class="footer-content">
               <div class="footer-credits">
-                <p>Автор: <strong>Мария КРУШЕВСКАЯ</strong></p>
-                <p>Фото: <strong>Андрей ПРИМАЧЕК</strong></p>
+                <p>
+                  Автор:
+                  <strong
+                    ><a
+                      href="https://www.sb.by/author/1782589-valeriya-kurnevich-20240704/"
+                      class="footer-credit-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Лера Курневич</a
+                    ></strong
+                  >
+                </p>
+                <p>
+                  Фото:
+                  <strong
+                    ><a
+                      href="https://www.sb.by/author/photographers/1618111-kirill-stasko-20231115/"
+                      class="footer-credit-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Кирилл Стасько</a
+                    ></strong
+                  >
+                </p>
               </div>
               <hr class="footer-divider" />
               <div class="footer-copy">
