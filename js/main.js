@@ -17,7 +17,12 @@ const cursorFollower = document.querySelector('.cursor-follower');
 const notification = document.getElementById('notification');
 const notificationText = document.getElementById('notificationText');
 const horizontalContainer = document.getElementById('horizontalContainer');
-const sections = Array.from(document.querySelectorAll('.section'));
+let sections = horizontalContainer
+    ? Array.from(horizontalContainer.querySelectorAll(':scope > section.section'))
+    : [];
+if (!sections.length) {
+    sections = Array.from(document.querySelectorAll('.section'));
+}
 
 let galleryMainSwiper = null;
 let galleryThumbsSwiper = null;
