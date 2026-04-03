@@ -1028,7 +1028,15 @@ function initSapPricesMapSection(section) {
             });
 
             const group = L.featureGroup(markers);
-            map.fitBounds(group.getBounds().pad(0.14));
+
+            function syncMapView() {
+                map.invalidateSize();
+                if (markers.length) {
+                    map.fitBounds(group.getBounds().pad(0.14));
+                }
+            }
+
+            syncMapView();
 
             const spots = section.querySelectorAll('.sap-price-spot');
 
@@ -1061,9 +1069,13 @@ function initSapPricesMapSection(section) {
 
             sapPricesMapBundle = { map, markers };
 
+            /* Контейнер карты часто получает итоговый размер после layout; без invalidateSize до fitBounds тайлы и маркеры визуально «плывут». */
             requestAnimationFrame(() => {
-                map.invalidateSize();
-                setTimeout(() => map.invalidateSize(), 320);
+                syncMapView();
+                requestAnimationFrame(() => {
+                    syncMapView();
+                    setTimeout(syncMapView, 280);
+                });
             });
         })
         .catch(() => {
