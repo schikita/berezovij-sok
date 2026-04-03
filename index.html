@@ -225,12 +225,20 @@
           <span class="logo-text">SB.BY</span>
         </a>
         <ul class="nav-links">
-          <li><a href="#hero" class="nav-link" data-section="0">Главная</a></li>
           <li>
-            <a href="#about" class="nav-link" data-section="1">О продукте</a>
+            <a href="#hero" class="nav-link" data-section="0"
+              >Ищем нужное дерево</a
+            >
           </li>
           <li>
-            <a href="#benefits" class="nav-link" data-section="2">Польза</a>
+            <a href="#about" class="nav-link" data-section="2"
+              >Делаем берёзовый фреш</a
+            >
+          </li>
+          <li>
+            <a href="#prodazha" class="nav-link" data-section="11"
+              >Почему сок продают?</a
+            >
           </li>
         </ul>
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -244,9 +252,21 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <ul class="mobile-nav-links">
-        <li><a href="#hero" class="mobile-nav-link">Главная</a></li>
-        <li><a href="#about" class="mobile-nav-link">О продукте</a></li>
-        <li><a href="#benefits" class="mobile-nav-link">Польза</a></li>
+        <li>
+          <a href="#hero" class="mobile-nav-link" data-section="0"
+            >Ищем нужное дерево</a
+          >
+        </li>
+        <li>
+          <a href="#about" class="mobile-nav-link" data-section="2"
+            >Делаем берёзовый фреш</a
+          >
+        </li>
+        <li>
+          <a href="#prodazha" class="mobile-nav-link" data-section="11"
+            >Почему сок продают?</a
+          >
+        </li>
       </ul>
     </div>
 
@@ -261,6 +281,15 @@
       <div class="progress-dot" data-section="5"></div>
       <div class="progress-dot" data-section="6"></div>
       <div class="progress-dot" data-section="7"></div>
+      <div class="progress-dot" data-section="8"></div>
+      <div class="progress-dot" data-section="9"></div>
+      <div class="progress-dot" data-section="10"></div>
+      <div class="progress-dot" data-section="11"></div>
+      <div class="progress-dot" data-section="12"></div>
+      <div class="progress-dot" data-section="13"></div>
+      <div class="progress-dot" data-section="14"></div>
+      <div class="progress-dot" data-section="15"></div>
+      <div class="progress-dot" data-section="16"></div>
     </div>
 
     <!-- Main Container with Horizontal Scroll -->
@@ -278,18 +307,14 @@
                 <span>ЖИВОЙ РЕПОРТАЖ</span>
               </div>
               <h1 class="hero-title">
-                <span class="title-line" data-parallax="1">Чистая сила</span>
-                <span class="title-line" data-parallax="1.2">природы в</span>
+                <span class="title-line" data-parallax="1">Как заготовить</span>
+                <span class="title-line" data-parallax="1.2">берёзовый</span>
                 <span class="title-line accent" data-parallax="1.4"
-                  >каждой капле</span
+                  >сок?</span
                 >
               </h1>
-              <p class="hero-description" data-parallax="1.1">
-                Берёзовый сок — живой источник витаминов и минералов, собранный
-                в самых экологически чистых лесах Беларуси
-              </p>
               <div class="hero-buttons" data-parallax="1.2">
-                <a href="#about" class="btn btn-primary">
+                <a href="#report-lead" class="btn btn-primary">
                   <span>Узнать больше</span>
                   <i class="fas fa-arrow-right"></i>
                 </a>
@@ -302,8 +327,42 @@
           </div>
         </section>
 
+        <!-- Секция: лид репортажа -->
+        <section
+          class="section report-lead-section"
+          id="report-lead"
+          data-section="1"
+          aria-label="Выезд в Борисовский опытный лесхоз"
+        >
+          <div class="report-lead-content">
+            <p class="report-lead-text">
+              Теплая погода заставила белоствольные деревья «заплакать» уже в
+              середине марта. Специалисты рассчитывают заготовить в этом сезоне
+              около 15 тысяч тонн березовика! Наши корреспонденты
+              <a
+                class="report-lead-author"
+                href="https://www.sb.by/author/1782589-valeriya-kurnevich-20240704/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Лера Курневич</a
+              >
+              и
+              <a
+                class="report-lead-author"
+                href="https://www.sb.by/author/photographers/1618111-kirill-stasko-20231115/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Кирилл Стасько</a
+              >
+              тоже захотели заготовить немного сока. Чтобы узнать, как это
+              делать и проследить весь путь напитка срочно выехали в Борисовский
+              опытный лесхоз!
+            </p>
+          </div>
+        </section>
+
         <!-- Section 2: About -->
-        <section class="section about-section" id="about" data-section="1">
+        <section class="section about-section" id="about" data-section="2">
           <div class="section-bg">
             <div class="birch-pattern"></div>
           </div>
@@ -338,197 +397,74 @@
             </div>
             <div class="about-right">
               <div class="section-header">
-                <span class="section-badge">О продукте</span>
                 <h2 class="section-title">
-                  Природная <span class="accent">эликсир</span> здоровья
+                  Ищем нужное <span class="accent">дерево</span>
                 </h2>
               </div>
               <div class="about-text">
                 <p class="text-large">
-                  Берёзовый сок — это уникальный природный продукт, который
-                  образуется в стволах деревьев в период весеннего сокодвижения.
-                </p>
-                <p>
-                  Собирается вручную в экологически чистых лесах Сибири и Урала,
-                  где берёзовые рощи растут далеко от промышленных зон.
-                </p>
-                <p>
-                  Благодаря бережной технологии сбора и моментальной
-                  пастеризации, сок сохраняет все полезные свойства
-                  свежевыжатого напитка.
+                  Сочная кампания в Борисовском опытном лесхозе началась 24
+                  марта, планы по заготовке амбициозные – 650 тонн. Под промысел
+                  отвели 24 делянки в 16 лесничествах. Выходим из машины в
+                  угодьях Печинского лесничества – и весна накрывает с головой.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Section 3: Benefits -->
+        <!-- Лесничий Дмитрий Гуня -->
         <section
-          class="section benefits-section"
-          id="benefits"
-          data-section="2"
+          class="section gunya-section"
+          id="gunya"
+          data-section="3"
+          aria-label="Комментарий лесничего Печинского лесничества"
         >
-          <div class="section-bg">
-            <div class="gradient-mesh"></div>
-          </div>
-          <div class="benefits-content">
-            <div class="section-header centered">
-              <span class="section-badge">Польза</span>
-              <h2 class="section-title">
-                Почему берёзовый <span class="accent">сок</span>?
-              </h2>
-              <p class="section-description">
-                Уникальный состав напитка делает его незаменимым для поддержания
-                здоровья и молодости
+          <div class="gunya-content">
+            <div class="gunya-panel">
+              <p class="gunya-attribution">
+                Лесничий Печинского лесничества Дмитрий Гуня:
+              </p>
+              <p class="gunya-quote">
+                – Для подсочки берем участки, которые в ближайшие пять лет
+                планируют вырубить. К этому времени березы достигают примерно 60
+                лет. При этом дерево обязательно должно быть здоровым – без
+                трещин, гнили, поражений коры или грибных наростов.
               </p>
             </div>
-            <div class="benefits-grid">
-              <div class="benefit-card" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-content">
-                  <div class="card-icon">
-                    <i class="fas fa-heart"></i>
-                  </div>
-                  <h3 class="card-title">Для сердца</h3>
-                  <p class="card-text">
-                    Регулирует артериальное давление и укрепляет
-                    сердечно-сосудистую систему
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Калий</span>
-                    <span class="element">Магний</span>
-                  </div>
-                </div>
-              </div>
-              <div class="benefit-card featured" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-badge">Топ</div>
-                <div class="card-content">
-                  <div class="card-icon large">
-                    <i class="fas fa-sparkles"></i>
-                  </div>
-                  <h3 class="card-title">Детокс</h3>
-                  <p class="card-text">
-                    Очищает организм от токсинов и шлаков, улучшает метаболизм
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Флавоноиды</span>
-                    <span class="element">Сапонины</span>
-                  </div>
-                </div>
-              </div>
-              <div class="benefit-card" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-content">
-                  <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
-                  </div>
-                  <h3 class="card-title">Иммунитет</h3>
-                  <p class="card-text">
-                    Укрепляет иммунную систему и повышает сопротивляемость
-                    вирусам
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Витамин C</span>
-                    <span class="element">Цинк</span>
-                  </div>
-                </div>
-              </div>
-              <div class="benefit-card" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-content">
-                  <div class="card-icon">
-                    <i class="fas fa-gem"></i>
-                  </div>
-                  <h3 class="card-title">Молодость</h3>
-                  <p class="card-text">
-                    Замедляет процессы старения и улучшает состояние кожи
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Антиоксиданты</span>
-                    <span class="element">Минералы</span>
-                  </div>
-                </div>
-              </div>
-              <div class="benefit-card" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-content">
-                  <div class="card-icon">
-                    <i class="fas fa-bolt"></i>
-                  </div>
-                  <h3 class="card-title">Энергия</h3>
-                  <p class="card-text">
-                    Придаёт силы и бодрость, улучшает умственную активность
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Глюкоза</span>
-                    <span class="element">Фруктоза</span>
-                  </div>
-                </div>
-              </div>
-              <div class="benefit-card" data-tilt>
-                <div class="card-bg"></div>
-                <div class="card-content">
-                  <div class="card-icon">
-                    <i class="fas fa-bone"></i>
-                  </div>
-                  <h3 class="card-title">Кости</h3>
-                  <p class="card-text">
-                    Укрепляет костную ткань и предотвращает остеопороз
-                  </p>
-                  <div class="card-elements">
-                    <span class="element">Кальций</span>
-                    <span class="element">Фосфор</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="composition-chart">
-              <h3 class="chart-title">Состав берёзового сока</h3>
-              <div class="chart-bars">
-                <div class="chart-bar" data-width="85">
-                  <span class="bar-label">Вода</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">98.5%</span>
-                  </div>
-                </div>
-                <div class="chart-bar" data-width="65">
-                  <span class="bar-label">Минералы</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">0.5%</span>
-                  </div>
-                </div>
-                <div class="chart-bar" data-width="45">
-                  <span class="bar-label">Глюкоза</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">0.4%</span>
-                  </div>
-                </div>
-                <div class="chart-bar" data-width="35">
-                  <span class="bar-label">Фруктоза</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">0.3%</span>
-                  </div>
-                </div>
-                <div class="chart-bar" data-width="25">
-                  <span class="bar-label">Витамины</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">0.2%</span>
-                  </div>
-                </div>
-                <div class="chart-bar" data-width="15">
-                  <span class="bar-label">Энзимы</span>
-                  <div class="bar-fill">
-                    <span class="bar-value">0.1%</span>
-                  </div>
-                </div>
-              </div>
+          </div>
+        </section>
+
+        <!-- Почва и лес -->
+        <section
+          class="section ground-section"
+          id="ground"
+          data-section="4"
+          aria-label="Почва, смешанный лес и сокодвижение"
+        >
+          <div class="ground-content">
+            <div class="ground-panel">
+              <p class="ground-lead">
+                К почве берёза особых претензий не предъявляет: растёт и на
+                влажной, и на сухой, и на болотистой, и на каменистой. Но лучшим
+                вариантом специалисты считают смешанный лес на возвышенности –
+                как здесь, в Печах. Верхушки полосатых стволов устремляются на
+                два–три десятка метров вверх, где переплетаются с соснами и
+                елями.
+              </p>
+              <p class="ground-quote">
+                – Вот этой явно больше ста лет, – Дмитрий проводит ладонью по
+                грубой коре сосны-сторожила. – Сосны и ели затеняют почву,
+                удерживают влагу и прохладу. Из-за этого активное сокодвижение
+                у берёз замедляется, зато в самом напитке повышается концентрация
+                полезных веществ – сахаров и минералов.
+              </p>
             </div>
           </div>
         </section>
 
-        <!-- Section 4: Gallery -->
-        <section class="section gallery-section" id="gallery" data-section="3">
+        <!-- Галерея (после блока «Почва и лес») -->
+        <section class="section gallery-section" id="gallery" data-section="5">
           <div class="gallery-content">
             <div class="gallery-container">
               <div class="gallery-slider swiper" id="gallerySlider">
@@ -755,8 +691,128 @@
           </div>
         </section>
 
-        <!-- Section 5: Video -->
-        <section class="section video-section" id="video" data-section="4">
+        <!-- Делаем берёзовый фреш -->
+        <section
+          class="section begin-fresh-section"
+          id="begin-fresh"
+          data-section="6"
+          aria-label="Подготовка деревьев к подсочке"
+        >
+          <div class="begin-fresh-content">
+            <div class="begin-fresh-panel">
+              <h2 class="begin-fresh-title">
+                Делаем <span class="accent">берёзовый фреш</span>
+              </h2>
+              <p class="begin-fresh-text">
+                До начала сезона в лесничестве заранее наметили деревья,
+                пригодные для подсочки. Диаметр ствола должен быть не меньше 20
+                сантиметров – его измеряют специальными мерными вилками. Дальше
+                вступает в силу арифметика: в берёзе диаметром 20–25 сантиметров
+                можно проделывать одно отверстие, 25–35 сантиметров – два, у более
+                мощной, свыше 35 сантиметров, – максимум три.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Подсочка в лесу -->
+        <section
+          class="section zasechki-section"
+          id="zasechki"
+          data-section="7"
+          aria-label="Демонстрация подсочки"
+        >
+          <div class="zasechki-content">
+            <div class="zasechki-panel">
+              <p class="zasechki-text">
+                Лесовод Сергей Хацкевич демонстрирует процесс подсочки. Уверенно
+                подносит электропилу к стволу, короткое жужжание – и на светлой
+                коре появляется аккуратный подпил. В свежий надрез лесовод
+                вставляет желобок и подпоясывает берёзу полиэтиленовым мешком.
+                Проходит несколько секунд – и по трубке уже скользит прозрачная
+                струйка. Сначала осторожная, будто примеряется, а затем течёт
+                всё увереннее, с перестуком капель по дну пакета.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Сок в начале и в разгар сезона -->
+        <section
+          class="section firs-etap-section"
+          id="firs-etap"
+          data-section="8"
+          aria-label="Комментарий о вкусе сока"
+        >
+          <div class="firs-etap-content">
+            <p class="firs-etap-text">
+              – На старте сезона сок был похож на воду, – подмечает
+              Хацкевич. – А сейчас уже настоялся – другое дело: сладкий,
+              насыщенный. Говорят, за весну надо литров десять выпить, чтобы весь
+              год здоровым быть. Угощайтесь!
+            </p>
+          </div>
+        </section>
+
+        <!-- Сбор сока: процесс -->
+        <section
+          class="section process-collect-section"
+          id="process-collect"
+          data-section="9"
+          aria-label="Сбор и перелив берёзового сока"
+        >
+          <div class="process-collect-inner">
+            <div class="process-collect-photos">
+              <figure class="process-collect-figure">
+                <img
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  data-defer-src="img/process/1.jpg"
+                  alt="Сбор сока, этап 1"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="process-collect-figure">
+                <img
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  data-defer-src="img/process/2.jpg"
+                  alt="Сбор сока, этап 2"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="process-collect-figure">
+                <img
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  data-defer-src="img/process/3.jpg"
+                  alt="Сбор сока, этап 3"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+            <div class="process-collect-text-wrap">
+              <p class="process-collect-text">
+                С деревьев снимают наполненные пакеты, переливают содержимое в
+                ведра и несут к большой бочке. Перед тем как отправить «берёзовый
+                фреш» в общий резервуар, его обязательно процеживают. К полудню
+                лесоводы уже заполнили две ёмкости, и прозрачная жидкость
+                подбирается к краям третьей – темпы ударные. С двух делянок за
+                день здесь получают около двух тонн берёзовика.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Видео -->
+        <section class="section video-section" id="video" data-section="10">
+          <div
+            class="section-bg video-section__bg"
+            aria-hidden="true"
+          ></div>
           <div class="video-content video-split">
             <div class="video-split__media">
               <div
@@ -842,26 +898,156 @@
               </div>
             </div>
             <div class="video-split__text">
-              <div class="section-header">
-                <span class="section-badge">Видео</span>
-                <h2 class="section-title">
-                  Узнайте <span class="accent">больше</span>
-                </h2>
-                <p class="section-description">
-                  Посмотрите, как мы создаём наш продукт и что говорят эксперты
-                </p>
+              <div class="video-split__copy">
                 <p class="video-split__lead">
-                  Берёзовый сок собирают в короткий весенний период — в
-                  материале показан путь от рощи до бутылки и почему этот
-                  напиток называют живой водой леса.
+                  По прогнозам лесовода, сезон продлится примерно до середины
+                  апреля. Как только на ветках появятся первые листочки,
+                  сокодвижение изменит направление и напиток перестанет быть
+                  таким сладким и полезным. Когда кампания завершится, желобки
+                  снимут, промоют, обработают и уберут до следующей весны.
+                  Отверстия в стволах заделают глиной, чтобы внутрь не попали
+                  бактерии или споры грибов. На некоторых берёзах такие «шрамы»
+                  уже видны.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Продажа сока -->
+        <section
+          class="section prodazha-section"
+          id="prodazha"
+          data-section="11"
+          aria-label="Продажа берёзового сока"
+        >
+          <div
+            class="section-bg prodazha-section__bg"
+            aria-hidden="true"
+          ></div>
+          <div class="prodazha-content">
+            <h2 class="prodazha-title">Почему сок продают?</h2>
+            <p class="prodazha-text">
+              Берёзовый сок продают на переработку промышленным предприятиям и
+              населению. Для реализации гражданам в Борисове оборудовали четыре
+              торговые точки. На одной из локаций, что по улице Строителей, к
+              кранику с берёзовиком уже выстроилась солидная очередь. В день
+              здесь расходится семь бочек, а это больше 3,5 тонн. Кто-то скромно
+              берёт одну бутыль, кто-то навьючивается сразу четырьмя.
+            </p>
+          </div>
+        </section>
+
+        <!-- Цены и карта точек в Минске -->
+        <section
+          class="section sap-prices-section"
+          id="sap-prices"
+          data-section="12"
+          aria-label="Цены на берёзовый сок и точки продажи в Минске"
+        >
+          <div class="sap-prices-inner">
+            <div class="sap-prices-copy prices-map-panel">
+              <p class="sap-prices-lead">
+                Цены зависят от места продажи. Дешевле всего напиток обойдётся в
+                лесничествах&nbsp;— 0,42&nbsp;рубля за литр. На выездных
+                торговых точках в райцентрах за литр просят 0,48&nbsp;рубля, в
+                Минске&nbsp;— 0,55&nbsp;рубля.
+              </p>
+              <ul class="sap-prices-tiers" aria-label="Сравнение цен по типу точки">
+                <li class="sap-price-tier">
+                  <span class="sap-price-tier__label">Лесничества</span>
+                  <span class="sap-price-tier__value">0,42&nbsp;<span class="sap-price-tier__unit">руб./л</span></span>
+                </li>
+                <li class="sap-price-tier">
+                  <span class="sap-price-tier__label">Райцентры</span>
+                  <span class="sap-price-tier__value">0,48&nbsp;<span class="sap-price-tier__unit">руб./л</span></span>
+                </li>
+                <li class="sap-price-tier sap-price-tier--accent">
+                  <span class="sap-price-tier__label">Минск</span>
+                  <span class="sap-price-tier__value">0,55&nbsp;<span class="sap-price-tier__unit">руб./л</span></span>
+                </li>
+              </ul>
+              <p class="sap-prices-address-intro">
+                В столице площадки по продаже берёзовика развернулись по
+                следующим адресам (нажмите адрес, чтобы показать точку на
+                карте):
+              </p>
+              <ul class="sap-prices-spots" id="sapPricesSpotList">
+                <li>
+                  <button
+                    type="button"
+                    class="sap-price-spot is-active"
+                    data-marker="0"
+                    aria-pressed="true"
+                  >
+                    ул.&nbsp;Багратиона,&nbsp;70
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="sap-price-spot" data-marker="1" aria-pressed="false">
+                    Логойский тракт,&nbsp;52
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="sap-price-spot" data-marker="2" aria-pressed="false">
+                    ул.&nbsp;Тимирязева,&nbsp;118
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="sap-price-spot" data-marker="3" aria-pressed="false">
+                    ул.&nbsp;Леонида Левина,&nbsp;8
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="sap-price-spot" data-marker="4" aria-pressed="false">
+                    пр.&nbsp;Дзержинского,&nbsp;104
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="sap-prices-map-wrap prices-map-panel">
+              <div
+                id="sapPricesMap"
+                class="sap-prices-map"
+                role="region"
+                aria-label="Интерактивная карта: точки продажи в Минске"
+                tabindex="0"
+              ></div>
+              <p class="sap-prices-map-hint" aria-hidden="true">
+                <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+                Колёсико мыши не масштабирует карту, чтобы не мешать прокрутке
+                страницы. Используйте +/− на карте или жесты на сенсоре.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Законность заготовки -->
+        <section
+          class="section legal-warning-section"
+          id="legal-warning"
+          data-section="13"
+          aria-label="Штрафы за незаконную заготовку и легальный сбор сока"
+        >
+          <div
+            class="section-bg legal-warning-section__bg"
+            aria-hidden="true"
+          ></div>
+          <div class="legal-warning-content legal-warning-panel">
+            <p class="legal-warning-text">
+              А вот дороже всего обойдется незаконная заготовка сока. Штраф для
+              физического лица – до 20 базовых величин (900 рублей), для
+              индивидуального предпринимателя – до 100 БВ (4500 рублей), для
+              юридического лица – до 500 (22500 рублей). А ведь заготовить сок
+              самостоятельно – законно и вполне реально. Достаточно обратиться в
+              ближайшее лесничество: там подскажут пригодные участки, объяснят
+              правила сбора и другие сопутствующие тонкости.
+            </p>
+          </div>
+        </section>
+
         <!-- Section 6: Game - Collect the Sap! -->
-        <section class="section game-section" id="game" data-section="5">
+        <section class="section game-section" id="game" data-section="14">
           <div class="game-content">
             <div class="section-header centered">
               <span class="section-badge">Игра</span>
@@ -1030,7 +1216,7 @@
         <section
           class="section projects-section"
           id="projects"
-          data-section="6"
+          data-section="15"
           aria-label="Живой репортаж — материалы"
         >
           <div
@@ -1110,7 +1296,7 @@
         </section>
 
         <!-- Section 8: Footer -->
-        <section class="section footer-section" id="contact" data-section="7">
+        <section class="section footer-section" id="contact" data-section="16">
           <footer class="site-footer" role="contentinfo">
             <div class="footer-content">
               <div class="footer-credits">

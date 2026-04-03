@@ -92,7 +92,7 @@ function initCursor() {
         });
     });
 
-    document.querySelectorAll('a, button, .gallery-item, .video-card, .benefit-card, .grid-item').forEach((el) => {
+    document.querySelectorAll('a, button, .gallery-item, .video-card, .grid-item').forEach((el) => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('hover');
             cursorFollower.classList.add('hover');
@@ -133,8 +133,9 @@ function setActiveSection(index) {
         dot.classList.toggle('active', dotIndex === index);
     });
 
-    navLinks.forEach((link, linkIndex) => {
-        link.classList.toggle('active', linkIndex === index);
+    navLinks.forEach((link) => {
+        const target = Number.parseInt(link.dataset.section, 10);
+        link.classList.toggle('active', !Number.isNaN(target) && target === index);
     });
 
     sections.forEach((section, sectionIndex) => {
@@ -211,10 +212,13 @@ function initNavigation() {
         });
     }
 
-    mobileNavLinks.forEach((link, index) => {
+    mobileNavLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            scrollToSection(index);
+            const sectionIndex = Number.parseInt(link.dataset.section, 10);
+            if (!Number.isNaN(sectionIndex)) {
+                scrollToSection(sectionIndex);
+            }
         });
     });
 
@@ -245,8 +249,7 @@ function initHeroAnimations() {
             stagger: 0.1,
             ease: 'power3.out'
         }, '-=0.2')
-        .from('.hero-description', { y: 24, opacity: 0, duration: 0.45, ease: 'power3.out' }, '-=0.35')
-        .from('.hero-buttons .btn', { y: 20, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'power3.out' }, '-=0.2')
+        .from('.hero-buttons .btn', { y: 20, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'power3.out' }, '-=0.35')
         .from('.stat-item', { y: 18, opacity: 0, duration: 0.35, stagger: 0.08, ease: 'power3.out' }, '-=0.2')
         .from('.bottle-container', { scale: 0.88, opacity: 0, duration: 0.8, ease: 'back.out(1.4)' }, '-=0.8')
         .from('.floating-drop, .floating-leaf', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(1.5)' }, '-=0.35');
@@ -306,7 +309,7 @@ function initSectionAnimations() {
                 });
             }
 
-            const animatedItems = section.querySelectorAll('.benefit-card, .gallery-item, .grid-item, .video-card, .feature-item, .contact-item, .footer-column, .game-container');
+            const animatedItems = section.querySelectorAll('.gallery-item, .grid-item, .video-card, .feature-item, .contact-item, .footer-column, .game-container, .report-lead-content, .prodazha-content, .prices-map-panel, .legal-warning-panel, .gunya-panel, .ground-panel, .begin-fresh-panel, .zasechki-panel, .firs-etap-content, .process-collect-photos, .process-collect-text-wrap');
             if (animatedItems.length) {
                 gsap.from(animatedItems, {
                     y: 32,
@@ -895,9 +898,126 @@ function initLazyAssets() {
     });
 }
 
+const SAP_PRICES_LOCATIONS = [
+    { lat: 53.91845, lng: 27.57342, title: 'ул. Багратиона, 70' },
+    { lat: 53.95148, lng: 27.61528, title: 'Логойский тракт, 52' },
+    { lat: 53.92908, lng: 27.59895, title: 'ул. Тимирязева, 118' },
+    { lat: 53.86775, lng: 27.53235, title: 'ул. Леонида Левина, 8' },
+    { lat: 53.86085, lng: 27.48265, title: 'пр. Дзержинского, 104' },
+];
+
+let leafletLoadPromise = null;
+let sapPricesMapBundle = null;
+
+function ensureLeafletLoaded() {
+    if (typeof window.L !== 'undefined') return Promise.resolve();
+    if (leafletLoadPromise) return leafletLoadPromise;
+
+    leafletLoadPromise = new Promise((resolve, reject) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(link);
+
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Leaflet failed to load'));
+        document.body.appendChild(script);
+    });
+
+    return leafletLoadPromise;
+}
+
+function initSapPricesMapSection(section) {
+    if (!section || section.id !== 'sap-prices' || section.dataset.sapMapInit === 'true') return;
+
+    const mapEl = document.getElementById('sapPricesMap');
+    if (!mapEl) return;
+
+    ensureLeafletLoaded()
+        .then(() => {
+            if (section.dataset.sapMapInit === 'true') return;
+            section.dataset.sapMapInit = 'true';
+
+            const { L } = window;
+            delete L.Icon.Default.prototype._getIconUrl;
+            L.Icon.Default.mergeOptions({
+                iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+                iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+                shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            });
+
+            const map = L.map(mapEl, {
+                scrollWheelZoom: false,
+                attributionControl: false,
+            });
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            const priceLine = '0,55&nbsp;руб./л';
+            const markers = SAP_PRICES_LOCATIONS.map((pt) => {
+                const marker = L.marker([pt.lat, pt.lng]).addTo(map);
+                marker.bindPopup(`<strong>${pt.title}</strong><br>${priceLine}`);
+                return marker;
+            });
+
+            const group = L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.14));
+
+            const spots = section.querySelectorAll('.sap-price-spot');
+
+            function setActiveMarker(index) {
+                spots.forEach((btn) => {
+                    const i = Number.parseInt(btn.dataset.marker, 10);
+                    const on = i === index;
+                    btn.classList.toggle('is-active', on);
+                    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+                const m = markers[index];
+                if (m) {
+                    map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 15), { duration: 0.55 });
+                    m.openPopup();
+                }
+            }
+
+            spots.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const idx = Number.parseInt(btn.dataset.marker, 10);
+                    if (!Number.isNaN(idx)) setActiveMarker(idx);
+                });
+            });
+
+            markers.forEach((m, i) => {
+                m.on('click', () => setActiveMarker(i));
+            });
+
+            setActiveMarker(0);
+
+            sapPricesMapBundle = { map, markers };
+
+            requestAnimationFrame(() => {
+                map.invalidateSize();
+                setTimeout(() => map.invalidateSize(), 320);
+            });
+        })
+        .catch(() => {
+            section.dataset.sapMapInit = '';
+            mapEl.innerHTML =
+                '<p class="sap-prices-map-fallback">Карта не загрузилась. Проверьте подключение к интернету.</p>';
+        });
+}
+
 function hydrateSectionMedia(section) {
     if (!section || section.id === 'hero' || section.dataset.mediaHydrated === 'true') return;
     section.dataset.mediaHydrated = 'true';
+
+    if (section.id === 'sap-prices') {
+        initSapPricesMapSection(section);
+    }
 
     section.querySelectorAll('img[data-defer-src]').forEach((img) => {
         const url = img.dataset.deferSrc;
@@ -913,6 +1033,9 @@ function hydrateSectionMedia(section) {
         img.removeAttribute('data-lazy-src');
     });
 
+    if (section.id === 'report-lead') {
+        section.classList.add('section-media-loaded');
+    }
     if (section.id === 'about') {
         section.classList.add('section-media-loaded');
     }
@@ -1043,6 +1166,7 @@ window.addEventListener('resize', () => {
         applyStableLayout();
         ScrollTrigger.refresh();
         detectActiveSection();
+        sapPricesMapBundle?.map?.invalidateSize();
     }, 120);
 }, { passive: true });
 
